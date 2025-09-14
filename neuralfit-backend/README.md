@@ -1,36 +1,89 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# NeuralFit - Backend
+
+This is the backend for the NeuralFit project, a starter scaffold built with Next.js. It includes a comprehensive set of features to kickstart a modern web application.
+
+## Tech Stack
+
+- **Framework**: [Next.js](https://nextjs.org/) (App Router)
+- **Styling**: [Tailwind CSS](https://tailwindcss.com/)
+- **ORM**: [Prisma](https://www.prisma.io/)
+- **Database**: [Supabase](https://supabase.com/) (Postgres)
+- **Authentication**: [NextAuth.js](https://next-auth.js.org/)
+- **AI**: Proxy to a [Hugging Face](https://huggingface.co/) inference endpoint
+- **Video**: [Daily.co](https://www.daily.co/) for video room creation
+
+## Prerequisites
+
+Before you begin, ensure you have the following installed and set up:
+
+- [Node.js](https://nodejs.org/) (v18 or higher recommended)
+- [pnpm](https://pnpm.io/) (or npm/yarn)
+- A [Supabase](https://supabase.com/) project
+- A [Google Cloud](https://console.cloud.google.com/) project for OAuth credentials
+- A [Daily.co](https://www.daily.co/) account and API key
+- A [Hugging Face](https://huggingface.co/) account and API key
 
 ## Getting Started
 
-First, run the development server:
+Follow these steps to get the development server running locally.
+
+### 1. Install Dependencies
+
+Clone the repository and navigate into the `neuralfit-backend` directory. Then, install the project dependencies using pnpm:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+pnpm install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### 2. Set Up Environment Variables
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Create a `.env` file in the root of the `neuralfit-backend` directory by copying the `.env.example` file (if it exists) or creating a new one. Populate it with your credentials.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```env
+# App & Authentication
+NEXTAUTH_URL=http://localhost:3000
+NEXTAUTH_SECRET= # Generate a secret: https://generate-secret.vercel.app/32
 
-## Learn More
+# Supabase & Database
+SUPABASE_URL= # Your Supabase project URL
+SUPABASE_ANON_KEY= # Your Supabase anon key
+SUPABASE_SERVICE_ROLE_KEY= # Your Supabase service role key
+DATABASE_URL= # Your Supabase DIRECT DATABASE URL (for migrations)
 
-To learn more about Next.js, take a look at the following resources:
+# Google Auth Provider
+GOOGLE_CLIENT_ID= # Your Google OAuth client ID
+GOOGLE_CLIENT_SECRET= # Your Google OAuth client secret
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+# Daily.co for Video Rooms
+DAILY_API_KEY= # Your Daily.co API key
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+# Hugging Face for AI Model
+HF_API_KEY= # Your Hugging Face API key
+HF_MODEL_ENDPOINT= # Your Hugging Face model inference endpoint
+```
 
-## Deploy on Vercel
+**Important**: For the `DATABASE_URL`, make sure you use the **direct connection string** from your Supabase dashboard (Settings > Database), as this is required for Prisma migrations.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### 3. Run Database Migrations
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Once your `.env` file is configured, run the Prisma migration command to set up your database schema:
+
+```bash
+npx prisma migrate dev
+```
+
+This will sync your Supabase database with the schema defined in `prisma/schema.prisma`.
+
+### 4. Run the Development Server
+
+Now, you can start the Next.js development server:
+
+```bash
+pnpm dev
+```
+
+Open [http://localhost:3000](http://localhost:3000) in your browser to see the application. The page will auto-update as you edit the files.
+
+## Deployment
+
+This application is ready to be deployed on [Vercel](https://vercel.com/). Ensure you set up all the environment variables from your `.env` file in your Vercel project settings before deploying.
