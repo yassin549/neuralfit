@@ -1,35 +1,22 @@
-import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
-import "./globals.css";
-import Providers from "../components/Providers";
+import './globals.css'
+import { ReactNode } from 'react'
+import Providers from './Providers'
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
+export const metadata = {
+  title: 'NeuralFit',
+  description: 'NeuralFit MVP',
+}
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
-
-export const metadata: Metadata = {
-  title: "NeuralFit",
-  description: "NeuralFit MVP",
-};
-
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        <Providers>{children}</Providers>
+      <body>
+        <Providers>
+          <div className="min-h-screen bg-background-dark text-white">
+            {children}
+          </div>
+        </Providers>
       </body>
     </html>
-  );
+  )
 }

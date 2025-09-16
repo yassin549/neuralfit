@@ -1,0 +1,70 @@
+{
+  "meta": {
+    "title": "NeuralFit — Talk. Be heard. Get better.",
+    "description": "NeuralFit is the anonymous social app with a super-smart AI therapist and safe voice/video spaces. Join rooms, get AI-backed support, and grow with a community that cares."
+  },
+  "hero": {
+    "headline": "Talk without the noise. Grow without the stigma.",
+    "subheadline": "NeuralFit blends anonymous voice rooms with an AI therapist that helps you reflect, learn, and move forward — faster than therapy alone.",
+    "primaryCta": "Get early access",
+    "secondaryCta": "Take the product tour"
+  },
+  "features": [
+    {
+      "title": "AI Therapist that listens",
+      "desc": "Evidence-based coaching, instant reflections, and personalized prompts.",
+      "icon": "Sparkles"
+    },
+    {
+      "title": "Anonymous voice & text rooms",
+      "desc": "Drop in, speak freely, or listen — anonymity is on by default.",
+      "icon": "Mic"
+    },
+    {
+      "title": "Safe by design",
+      "desc": "Built-in moderation and human support for tricky moments.",
+      "icon": "Shield"
+    },
+    {
+      "title": "Actionable summaries",
+      "desc": "Short takeaways and suggested next steps after every session.",
+      "icon": "FileText"
+    }
+  ],
+  "pricing": [
+    {
+      "tier": "Free",
+      "desc": "Community access, 60 min/month voice"
+    },
+    {
+      "tier": "Premium",
+      "desc": "Unlimited minutes, full AI therapist"
+    },
+    {
+      "tier": "Team",
+      "desc": "Admin tools and analytics"
+    }
+  ],
+  "testimonials": [
+    {
+      "name": "Amina R.",
+      "role": "Product Designer",
+      "text": "NeuralFit helped me actually process thoughts in minutes."
+    },
+    {
+      "name": "Marcus L.",
+      "role": "Teacher",
+      "text": "Finally a space where talking isn't performative."
+    }
+  ],
+  "faq": [
+    {
+      "q": "Is NeuralFit therapy?",
+      "a": "NeuralFit is an AI-powered mental wellness platform. It offers evidence-based support and should not replace emergency or medical treatment."
+    },
+    {
+      "q": "Can I stay anonymous?",
+      "a": "Yes. Profiles can be anonymous; audio is tied to a random ID unless you choose to verify."
+    }
+  ]
+}

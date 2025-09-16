@@ -1,29 +1,25 @@
-'use client'
-import { signIn, signOut, useSession } from 'next-auth/react'
+import { Header } from '@/components/landing/Header';
+import { Hero } from '@/components/landing/Hero';
+import { Features } from '@/components/landing/Features';
+import { Pricing } from '@/components/landing/Pricing';
+import { Testimonials } from '@/components/landing/Testimonials';
+import { FAQ } from '@/components/landing/FAQ';
+import { Footer } from '@/components/landing/Footer';
 
-export default function Home() {
-  const { data: session } = useSession()
+import content from '@/data/landing-content.json';
+
+export default function LandingPage() {
   return (
-    <main className="p-8">
-      <h1 className="text-4xl font-bold">NeuralFit</h1>
-      <p className="mt-4">MVP foundation</p>
-
-      <div className="mt-6">
-        {!session && (
-          <button onClick={() => signIn('google', { callbackUrl: process.env.NEXT_PUBLIC_BACKEND_URL })} className="p-2 bg-blue-500 text-white rounded">
-            Sign in with Google
-          </button>
-        )}
-        {session && (
-          <>
-            <p>Welcome, {session.user?.name}</p>
-            <a href="/chat" className="p-2 bg-green-500 text-white rounded mt-2 inline-block">Go to Chat</a>
-            <button onClick={() => signOut()} className="p-2 bg-red-500 text-white rounded mt-2 ml-2">
-              Sign out
-            </button>
-          </>
-        )}
-      </div>
-    </main>
-  )
+    <div className="flex min-h-screen flex-col">
+      <Header content={content} />
+      <main className="flex-1">
+        <Hero content={content} />
+        <Features content={content} />
+        <Pricing content={content} />
+        <Testimonials content={content} />
+        <FAQ content={content} />
+      </main>
+      <Footer />
+    </div>
+  );
 }
